@@ -1,3 +1,5 @@
+<pre>
+
 <?php
 
 require_once "../vendor/autoload.php";
@@ -54,3 +56,5 @@ space();
 
 // TODO: добавить магические методы
 // плюс научиться связывать оракл с php
+?>
+    </pre>
