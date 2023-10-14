@@ -54,7 +54,10 @@ $boss->rest();
 space();
 space();
 
-// TODO: добавить магические методы
-// плюс научиться связывать оракл с php
+$casts = ["fire", "water", "wind", ""];
+$magic = new \Аpp\Magic("Boris", $casts, 1000);
+print_r((string)$magic);
+space();
+
 ?>
     </pre>
