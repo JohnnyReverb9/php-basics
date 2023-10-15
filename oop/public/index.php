@@ -77,7 +77,7 @@ space();
 // реализация магических геттеров и сеттеров
 // прокидываем значения
 $magic->fire = "fire resist";
-$magic->water = "water resist";
+$magic->water = "water non-resist";
 $magic->wind = "wind resist";
 $magic->earth = "earth resist";
 print_r($magic->getSpells());
@@ -85,6 +85,73 @@ space();
 // получим неизвестное значение
 $val = $magic->qwerty;
 print_r($val); // не получим ошибки, так как вернулось просто null
+space();
+space();
 
+$magic->setName("Dumb'l'Door");
+
+// serialize --> по сути сохраняет данные в строку
+/*
+ * В PHP функция serialize() используется для преобразования структур данных в строку,
+ * которую можно сохранить в файле или передать по сети, и затем восстановить структуру данных из этой строки.
+ * Этот процесс называется сериализацией и десериализацией.
+ */
+// сериализация и десериализация связаны с методами sleep и wakeup, которые помогают упаковать объект в строку
+// и распаковать обратно, используется для сохранения объекта в ди
+$ser = serialize($magic); // с помощью магии сериализовали объект с указанными параметрами
+var_dump($ser);
+
+$obj = unserialize($ser); // десериализовали в соответствии с магическим методом
+// var_dump($obj);
+
+space();
+space();
+echo "invoke()";
+space();
+space();
+$intTan = round($magic(M_PI_4), 4);
+print_r("Интеграл от тангенса равен: $intTan");
+
+space();
+space();
+
+$magic2 = clone $magic;
+var_dump($magic2);
+print_r($magic2->getSpells());
+
+var_dump($magic);
+
+// функции для работы с классами
+// class_exists() -- проверяет, был ли объявлен класс
+var_dump(class_exists("Аpp\\Developer"));
+
+// get_class_methods() -- возвращает массив методов класса
+var_dump(get_class_methods("Аpp\\Magic")); // можно прокинуть объект
+
+// get_class_vars() -- возвращает строку из свойств класса
+var_dump(get_class_vars("Аpp\\Salary"));
+
+// get_class -- возвращает имя класса
+var_dump(get_class($dev));
+
+/*
+ * get_declared_classes
+ * get_declared_interfaces
+ * get_declared_traits
+ * возвращают массивы со всеми объявленными ...
+ *
+ * get_mangled_object_vars -- возвращает массив с изменёнными свойствами объекта
+ */
+
+// get_object_vars -- аналог get_class_vars() для объекта
+var_dump(get_object_vars($dev));
+
+// get_parent_class() -- возвращает родительский класс
+var_dump(get_parent_class($boss));
+
+// method_exists() -- проверка существует ли метод
+var_dump(method_exists($boss, 'info'));
+var_dump((method_exists($boss, 'work')));
+// property_exists -- аналогично методам
 ?>
-    </pre>
+</pre>

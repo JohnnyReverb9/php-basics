@@ -72,9 +72,81 @@ class Magic
          $this->spells[$name] = $value;
     }
 
+    // isset, unset обрабатывают проверку на свойства объекта и удаление
+    public function __isset($name): bool
+    {
+        if ($name === $this->name || $name === $this->teleport)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public function __unset(string $name): void
+    {
+        print_r("ансет того, чего нет");
+    }
+
+    // прописываем сценарий сериализации
+    public function __serialize(): array
+    {
+        return [
+            "name" => "Just Dumb",
+            "spells" => ["fire", "paper"],
+            "teleport" => 10
+        ];
+    }
+
+    // сценарий дереализации
+    public function __unserialize(array $data): void
+    {
+        var_dump($data);
+    }
+
+//    public function __sleep(): array
+//    {
+//        print_r("i sleep");
+//        return [];
+//    }
+
+    public function __wakeup(): void
+    {
+        print_r("i woke up");
+    }
+
+    // к объекту можно обратиться просто как к функции
+    public function __invoke($arg): float
+    {
+        return log(cos($arg));
+    }
+
+    // по сути просто копирует объект
+    public function __clone(): void
+    {
+        print_r("object copied");
+    }
+
+    // можно задать параметры, которые бы выводились при вардампе (чтобы не выводить всё)
+//    public function __debugInfo(): ?array
+//    {
+//        return [
+//          "name" => $this->name
+//        ];
+//    }
+
     // редко используется; вызывается тогда, когда цикл реализации класса завершается
     public function __destruct()
     {
         print_r("<br>Object has been destructed<br>");
+    }
+
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 }
