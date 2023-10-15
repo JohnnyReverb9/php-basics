@@ -54,10 +54,37 @@ $boss->rest();
 space();
 space();
 
-$casts = ["fire", "water", "wind", ""];
+// $casts = ["fire", "water", "wind", "earth"];
+$casts = [];
 $magic = new \Аpp\Magic("Boris", $casts, 1000);
-print_r((string)$magic);
+print_r((string)$magic); // использование __toString, когда объект приводится к строке
 space();
+
+space();
+// пусть таких функций и не реализовывалось, но вызов их возможен
+$sum = $magic->sum(12, 12, 12);
+print_r($sum);
+space();
+print_r($magic->summmmm(123, 12));
+space();
+
+$mult = \Аpp\Magic::mult(10, 99);
+print_r($mult);
+space();
+print_r(\Аpp\Magic::jumbo());
+space();
+space();
+// реализация магических геттеров и сеттеров
+// прокидываем значения
+$magic->fire = "fire resist";
+$magic->water = "water resist";
+$magic->wind = "wind resist";
+$magic->earth = "earth resist";
+print_r($magic->getSpells());
+space();
+// получим неизвестное значение
+$val = $magic->qwerty;
+print_r($val); // не получим ошибки, так как вернулось просто null
 
 ?>
     </pre>
