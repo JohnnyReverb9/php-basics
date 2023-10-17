@@ -1,11 +1,37 @@
 <?php
 
 // хорошо подходит для большой иерархии
-// todo: доделать
+
 interface AbstractFactory
 {
-    public function makeSchoolWorker();
-    public function makeCleaningWorker();
+    public static function makeSchoolWorker();
+    public static function makeCleaningWorker();
+}
+
+class OutsourceSchoolFactory implements AbstractFactory
+{
+    public static function makeCleaningWorker(): OutsourceCleaningWorker
+    {
+        return new OutsourceCleaningWorker();
+    }
+
+    public static function makeSchoolWorker(): OutsourceSchoolWorker
+    {
+        return new OutsourceSchoolWorker();
+    }
+}
+
+class NativeSchoolFactory implements AbstractFactory
+{
+    public static function makeSchoolWorker(): NativeSchoolWorker
+    {
+        return new NativeSchoolWorker();
+    }
+
+    public static function makeCleaningWorker(): NativeCleaningWorker
+    {
+        return new NativeCleaningWorker();
+    }
 }
 
 interface Staff
@@ -70,3 +96,15 @@ class OutsourceCleaningWorker implements CleaningWorker
         return "outsource cleaning";
     }
 }
+
+
+$nativeCleaning = NativeSchoolFactory::makeCleaningWorker();
+$nativeSchool = NativeSchoolFactory::makeSchoolWorker();
+
+$outsourceCleaning = OutsourceSchoolFactory::makeCleaningWorker();
+$outsourceSchool = OutsourceSchoolFactory::makeSchoolWorker();
+
+print_r($nativeCleaning->work() . "<br>");
+print_r($nativeCleaning->clean() . "<br>");
+print_r($outsourceSchool->work() . "<br>");
+print_r($outsourceSchool->teach() . "<br>");
