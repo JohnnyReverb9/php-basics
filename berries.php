@@ -2,14 +2,17 @@
 
 <?php
 
-$berries = [
-    "black" => ["blackberry", "blueberry"],
-    "red" => ["strawberry", "raspberry"]
+$fruits = [
+    "blue" => ["blueberry"],
+    "red" => ["strawberry", "raspberry", "apple", "litchi"],
+    "black" => ["blackberry"],
+    "yellow" => ["citrus", "orange"],
+    "white" => ["coconut", "litchi"]
 ];
 
-foreach ($berries as $color => $berry)
+foreach ($fruits as $color => $fruit)
 {
-    echo "$color: " . implode(", ", $berry) . "<br>";
+    echo "$color: " . implode(", ", $fruit) . "<br>";
 }
 
 ?>
