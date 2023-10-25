@@ -4,11 +4,11 @@
 
 $fruits = [
     "blue" => ["blueberry"],
-    "red" => ["strawberry", "raspberry", "apple", "litchi"],
+    "red" => ["strawberry", "raspberry", "apple (red)", "litchi"],
     "black" => ["blackberry"],
     "yellow" => ["citrus", "orange", "melon"],
     "white" => ["coconut"],
-    "green" => ["apple", "watermelon"]
+    "green" => ["apple (green)", "watermelon"]
 ];
 
 foreach ($fruits as $color => $fruit)
