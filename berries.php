@@ -6,8 +6,9 @@ $fruits = [
     "blue" => ["blueberry"],
     "red" => ["strawberry", "raspberry", "apple", "litchi"],
     "black" => ["blackberry"],
-    "yellow" => ["citrus", "orange"],
-    "white" => ["coconut"]
+    "yellow" => ["citrus", "orange", "melon"],
+    "white" => ["coconut"],
+    "green" => ["apple", "watermelon"]
 ];
 
 foreach ($fruits as $color => $fruit)
